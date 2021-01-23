@@ -19,6 +19,13 @@ cmd openterm ${{
     $TERMINAL &
 }}
 
+cmd pythonrun ${{
+    set -f
+    printf "python3 %s\n" "$f"
+    python3 "$f"
+    read
+}}
+
 map m
 map n
 map "'"
@@ -32,12 +39,12 @@ map ee $$EDITOR "$f"
 map es $sudo $EDITOR "$f"
 map z $$VIEWER "$f"
 map L $$LATEX "$f"
-map P $python3 "$f"
+map P pythonrun
 
 map dd delete
 map x cut
 map y copy
-map <enter> $$EDITOR "$f"
+map <enter> open
 map <esc> quit
 map nf mkfile
 map md mkdir
